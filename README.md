@@ -1,7 +1,7 @@
 # INT20H    team - shelby gang 😎
 
 ## Content:
-* Main task
+* [Main task](https://github.com/yanov2708/INT20H/blob/main/README.md#task-case-by-uklon-)
 * [Implementation](https://github.com/yanov2708/INT20H/blob/main/README.md#implementation)
   - Data analysis 
   - Feature engineering
