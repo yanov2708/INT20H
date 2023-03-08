@@ -3,9 +3,13 @@
 ## Content:
 * Main task
 * Implementation
-  - afsa
+  - Data analysis 
+  - Feature engineering
+  - About building a grid on the map
+  - About model
+* What did we fail to do?
 * [Our presentation](https://docs.google.com/presentation/d/1U1h3EjkSa-0i_aFUByYnwHISR9yoCbjD/edit?usp=share_link&ouid=112079393568654521016&rtpof=true&sd=true)
-* Test task
+* [Test task](https://github.com/yanov2708/INT20H/blob/main/test_task_done_v2.ipynb)
 
 ## Task case by Uklon:
 
@@ -109,3 +113,17 @@ A label was placed for each pair of initial and final cells, after which the num
 
 ### About model
 
+> Metrics - RMSE
+
+For the base prediction, we just took the **average of the target** and got a value of 214 seconds
+
+Next, we tried using **linear regression** and **Ridge** regression (L2 regularization) the result was already = 180 seconds and we wanted to compare it with the result of the tree-based **XGBRegressor**, and as it turned out, a learning rate = 0.05 and a maximum tree depth = 4 gave us the best result predictions = **121 seconds** without overfitting
+
+\* Somewhere there should be a validation curv 
+
+### What did we fail to do?
+
+1. We tried to calculate the load of node combinations for the last two hours for each trip, but this did not improve the model, however, the feature increased the calculation time.
+2. Weather: we easily found historical weather data for Odesa, but neither pandas nor bs4 helped us save the data to a dataframe, so after several hours of trying, we abandoned the idea.
+3. It was also interesting to see if the altitude of the starting and ending points of the route affected the duration of the trip, but we were unable to conveniently obtain the data.
+4. It was also possible to get more information from the Open Street Map
