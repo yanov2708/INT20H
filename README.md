@@ -2,16 +2,16 @@
 
 ## Content:
 * Main task
-* Implementation
+* [Implementation](https://github.com/yanov2708/INT20H/blob/main/README.md#implementation)
   - Data analysis 
   - Feature engineering
   - About building a grid on the map
   - About model
-* What did we fail to do?
+* [What did we fail to do?](https://github.com/yanov2708/INT20H/edit/main/README.md#what-did-we-fail-to-do)
 * [Our presentation](https://docs.google.com/presentation/d/1U1h3EjkSa-0i_aFUByYnwHISR9yoCbjD/edit?usp=share_link&ouid=112079393568654521016&rtpof=true&sd=true)
 * [Test task](https://github.com/yanov2708/INT20H/blob/main/test_task_done_v2.ipynb)
 
-## Task case by Uklon:
+## Task case by Uklon 🚕:
 
 ### Introduction
 Estimated Time of Arrival (ETA) calculation.
@@ -23,7 +23,7 @@ car class and, after confirmation of the order, sees
 ETA is the estimated time it will arrive by
 destination
 
-### Goal
+### Goal :pushpin:
 
 It is necessary to predict the time for which
 the user will arrive at the destination.
@@ -32,7 +32,7 @@ trips with actual end times
 trips.
 
 --- 
-### Data description
+### Data description :clipboard:
 
 The **orders.csv** file contains data:
 
@@ -71,12 +71,12 @@ orders passed through this gap.
 
 ## Implementation
 
-### Third party tools:
+### Third party tools: :toolbox:
 
 1. To read the Open Street Map file with the .osm extension, we used the `osmium` library, eventually getting the longitude and latitude of each node
 2. To visualize our nodes on the map of Odessa, we used the `folium` library
 
-### Data analysis 
+### Data analysis :detective:
 
 The first thing you should pay attention to is that the trip data is given for one day - January 24, 2022
 
@@ -87,13 +87,13 @@ Deleted rows:
 
 ![image](https://user-images.githubusercontent.com/98317081/223690222-865e5ef7-b89b-49a0-9df9-dae49a392809.png)
 
-Distribution charts
+Distribution charts :chart_with_upwards_trend:
 
 ![image](https://user-images.githubusercontent.com/98317081/223688166-a2e34b57-08d9-416c-ba47-7d875f2387a5.png)
 
 ![image](https://user-images.githubusercontent.com/98317081/223688200-12c1bbba-d99b-46a3-a2db-29bfda490cde.png)
 
-### Feature engineering
+### Feature engineering :wrench:
 
 `minutes` - all our data is trips in 1 day, so it made sense to create one column with the time in minutes that has passed since the beginning of the day.
 
@@ -103,7 +103,7 @@ Distribution charts
 
 `speed` and `route distance` - the basic features that entered the model almost without changes: the average speed between route nodes and the distance between boarding and disembarking
 
-**About building a grid on the map:**
+**:world_map: About building a grid on the map:**
 
 At first, we simply plotted the node points of the trip on the map, and then framed it with a grid, the size of the squares was chosen more intuitively than according to some kind of rule
 
@@ -111,7 +111,7 @@ At first, we simply plotted the node points of the trip on the map, and then fra
 
 A label was placed for each pair of initial and final cells, after which the number of such unique labels was counted. The larger the number -- the more popular the route, and therefore it can be with heavier traffic.
 
-### About model
+### About model :robot:
 
 > Metrics - RMSE
 
@@ -121,7 +121,7 @@ Next, we tried using **linear regression** and **Ridge** regression (L2 regulari
 
 \* Somewhere there should be a validation curv 
 
-### What did we fail to do?
+### What did we fail to do? :x:
 
 1. We tried to calculate the load of node combinations for the last two hours for each trip, but this did not improve the model, however, the feature increased the calculation time.
 2. Weather: we easily found historical weather data for Odesa, but neither pandas nor bs4 helped us save the data to a dataframe, so after several hours of trying, we abandoned the idea.
