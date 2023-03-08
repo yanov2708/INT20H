@@ -89,10 +89,23 @@ Distribution charts
 
 ![image](https://user-images.githubusercontent.com/98317081/223688200-12c1bbba-d99b-46a3-a2db-29bfda490cde.png)
 
-### Features we used
+### Feature engineering
 
 `minutes` - all our data is trips in 1 day, so it made sense to create one column with the time in minutes that has passed since the beginning of the day.
 
-`Total nodes` - to calculate road congestion, as one of the components, we calculated the number of times how many connections of two nodes met in the routes.
+`total nodes on the route` - to calculate road congestion, as one of the components, we calculated the number of times how many connections of two nodes met in the routes.
 
-`Frequency, map with nodes` - putting all the nodes on a map divided into cells, we were able to easily see the most active and most saturated parts of the city. From here we got the frequency of trips from one cell to another.
+`frequency, map with nodes` - putting all the nodes on a map divided into cells, we were able to easily see the most active and most saturated parts of the city. From here we got the frequency of trips from one cell to another.
+
+`speed` and `route distance` - the basic features that entered the model almost without changes: the average speed between route nodes and the distance between boarding and disembarking
+
+**About building a grid on the map:**
+
+At first, we simply plotted the node points of the trip on the map, and then framed it with a grid, the size of the squares was chosen more intuitively than according to some kind of rule
+
+![image](https://user-images.githubusercontent.com/98317081/223697583-317aef58-21a6-41bf-8b0b-1c1206b55e92.png)
+
+A label was placed for each pair of initial and final cells, after which the number of such unique labels was counted. The larger the number -- the more popular the route, and therefore it can be with heavier traffic.
+
+### About model
+
